@@ -14,6 +14,7 @@ Answer: [0 9 3 * *](https://crontab.guru/#0_9_3_*_*)
 
 # Q3
 
+* load data
 ```bash
 mkdir data
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2023-01.parquet -O data/green_tripdata_2023-01.parquet
@@ -21,6 +22,32 @@ wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2023-02.parq
 ```
 
 
+* build and deploy run
 ```bash
 prefect project init
 prefect deploy orchestrate.py:main_flow -n 'taxi1' -p 'mlops-zoomcamp'
+prefect deployment run 'main-flow/taxi1'
+```
+
+* start the worker pool
+```bash
+prefect worker start --pool 'mlops-zoomcamp'
+```
+
+logs
+```
+...
+[95]	validation-rmse:5.20087 
+[96]	validation-rmse:5.20016
+[97]	validation-rmse:5.19983
+[98]	validation-rmse:5.19931
+[99]	validation-rmse:5.19931
+Finished in state Completed()
+```
+
+# Q4
+
+
+```bash
+wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2023-03.parquet -O data/green_tripdata_2023-03.parquet
+```
