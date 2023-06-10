@@ -51,3 +51,24 @@ Finished in state Completed()
 ```bash
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2023-03.parquet -O data/green_tripdata_2023-03.parquet
 ```
+
+
+logs
+```
+...
+[97]	validation-rmse:5.37512
+[98]	validation-rmse:5.37468
+[99]	validation-rmse:5.37450
+Finished in state Completed()
+```
+
+# Q5
+
+https://prefecthq.github.io/prefect-email/#saving-credentials-to-block
+
+`email_send_message -> sends email`
+
+
+# Q6 
+
+Automation steps `01 Trigger 02 Actions 03 Details`

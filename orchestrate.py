@@ -70,7 +70,7 @@ def train_best_model(
     y_train: np.ndarray,
     y_val: np.ndarray,
     dv: sklearn.feature_extraction.DictVectorizer,
-) -> None:
+) -> str:
     """train a model with best hyperparams and write everything out"""
 
     with mlflow.start_run():
@@ -124,7 +124,8 @@ def train_best_model(
         create_markdown_artifact(
             key="duration-model-report", markdown=markdown__rmse_report
         )
-    return None
+
+    return markdown__rmse_report
 
 
 @flow
@@ -146,7 +147,7 @@ def main_flow(
     X_train, X_val, y_train, y_val, dv = add_features(df_train, df_val)
 
     # Train
-    train_best_model(X_train, X_val, y_train, y_val, dv)
+    markdown__rmse_report = train_best_model(X_train, X_val, y_train, y_val, dv)
 
 
 if __name__ == "__main__":
